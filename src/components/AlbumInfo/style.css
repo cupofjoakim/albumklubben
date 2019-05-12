@@ -7,7 +7,8 @@
 }
 
 .album-info--cover img {
-  width: 19rem;
+  max-width: 19rem;
+  width: 100%;
 }
 
 .album-info--meta {
@@ -16,8 +17,18 @@
 }
 
 .album-info--meta .heading {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0 0 1rem 0;
+}
+
+.album-info--meta .subheading {
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.album-info--meta .subheading .year {
+  font-style: italic;
+  opacity: 0.5;
 }
 
 .external-action {
@@ -41,4 +52,26 @@
   margin-right: 1rem;
   display: inline-block;
   vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .album-info {
+    flex-direction: column;
+    padding: 3rem 2rem 2rem;
+  }
+
+  .album-info--meta {
+    margin-top: 1rem;
+    padding: 0;
+  }
+
+  .album-info--meta .heading {
+    font-size: 2rem;
+  }
+
+  .external-action {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+  }
 }

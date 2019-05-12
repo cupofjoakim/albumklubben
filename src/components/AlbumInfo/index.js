@@ -14,7 +14,7 @@ const AlbumInfo = () => {
       <div className="album-info--meta">
         <h1 className="heading">{albumData.name}</h1>
         <p className="subheading">
-          {albumData.artist} <span>{albumData.year}</span>
+          {albumData.artist} <span className="year">{albumData.year}</span>
         </p>
         {albumData.urls.map(({ type, url }) => (
           <ExternalLink key={type} type={type} url={url} />

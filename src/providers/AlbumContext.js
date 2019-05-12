@@ -12,7 +12,7 @@ export class AlbumProvider extends Component {
 
     this.state = {
       resourcesToLoad: 3,
-      resourcesLoaded: 0, // Temporarily since we're not loading google docs yet
+      resourcesLoaded: 0,
       weekNumber: getWeek(),
       albumData: null
     };

@@ -10,9 +10,9 @@ import "./App.css";
 function App() {
   return (
     <AlbumProvider>
+      <Backdrop />
       <div className="wrapper">
         <WeekNumber />
-        <Backdrop />
         <AlbumInfo />
         <Loader />
       </div>

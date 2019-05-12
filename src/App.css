@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:400,700");
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -11,8 +17,23 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.6);
-  overflow: hidden;
-  position: relative;
+  position: fixed;
+  overflow: scroll;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-height: 500px) {
+  .wrapper {
+    position: static;
+  }
 }
