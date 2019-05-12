@@ -74,8 +74,6 @@ export class AlbumProvider extends Component {
       resourcesToLoad
     } = this.state;
 
-    console.log(weekRows);
-
     return (
       <AlbumContext.Provider
         value={{

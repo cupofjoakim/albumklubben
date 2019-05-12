@@ -23,7 +23,6 @@ body {
   left: 0;
   background: rgba(0, 0, 0, 0.6);
   position: fixed;
-  overflow: scroll;
 }
 
 .byline {
@@ -48,6 +47,10 @@ body {
 @media (max-width: 768px) {
   body {
     font-size: 14px;
+  }
+
+  .wrapper {
+    overflow: scroll;
   }
 }
 

@@ -14,17 +14,17 @@ function App() {
       <div className="wrapper">
         <WeekNumber />
         <AlbumInfo />
-        <Loader />
         <div className="byline">
           A weekend hack by{" "}
           <a
             href="https://github.com/cupofjoakim"
             title="cupofjoakims github profile"
           >
-            @cupofjoakim 👋
+            @cupofjoakim <span role="img">👋</span>
           </a>
         </div>
       </div>
+      <Loader />
     </AlbumProvider>
   );
 }

@@ -1,21 +1,35 @@
 import React, { useContext } from "react";
+import { CSSTransitionGroup } from "react-transition-group";
 import AlbumContext from "../../providers/AlbumContext";
 import "./style.css";
 
 const Loader = () => {
   const { loadingProgress } = useContext(AlbumContext);
-  if (loadingProgress === 1) return null;
+
+  const items = [];
+  if (loadingProgress !== 1) {
+    items.push(
+      <div key="loadingcover" className="loading-cover">
+        <Progress percent={loadingProgress * 100} />
+        <div className="loading-message">Loading album data...</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="loading-cover">
-      <Progress percent={loadingProgress} />
-    </div>
+    <CSSTransitionGroup
+      transitionName="loading-anim"
+      transitionEnterTimeout={100}
+      transitionLeaveTimeout={300}
+    >
+      {items}
+    </CSSTransitionGroup>
   );
 };
 
 const Progress = ({ percent }) => (
   <div className="progress">
-    <div className="progress--bar" style={{ width: `${percent * 100}%` }} />
+    <div className="progress--bar" style={{ width: `${percent}%` }} />
   </div>
 );
 
