@@ -23,12 +23,14 @@ const WeekNavigation = ({ currentWeek, weeks }) => {
   const weekIndex = weeks.indexOf(currentWeek);
   const isLastWeek = weeks[weeks.length - 1] === currentWeek;
   const hasPreviousWeeks = weekIndex > 0;
+  const pathName = window.location.pathname;
+
   return (
     <Fragment>
       {hasPreviousWeeks && (
         <a
           className="week-number--navigation"
-          href={`/?week=${weeks[weekIndex - 1]}`}
+          href={`${pathName}?week=${weeks[weekIndex - 1]}`}
           title="Previous week"
         >
           ←
@@ -37,7 +39,7 @@ const WeekNavigation = ({ currentWeek, weeks }) => {
       {!isLastWeek && (
         <a
           className="week-number--navigation"
-          href={`/?week=${weeks[weekIndex + 1]}`}
+          href={`${pathName}?week=${weeks[weekIndex + 1]}`}
           title="Next week"
         >
           →
