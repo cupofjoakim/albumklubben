@@ -1,6 +1,6 @@
 // Please don't use this :(
 const PUBLIC_KEY = "2729fff6586466b0db95b377fc7597c3";
-const BASE_URL = "http://ws.audioscrobbler.com/2.0/";
+const BASE_URL = "https://ws.audioscrobbler.com/2.0/";
 
 const buildParams = (method, album, artist, autoCorrect = 1) =>
   `?method=${method}&album=${album}&artist=${artist}&autocorrect=${autoCorrect}&api_key=${PUBLIC_KEY}&format=json`;
