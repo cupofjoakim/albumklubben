@@ -17,4 +17,14 @@ const getWeek = (date = new Date()) => {
   );
 };
 
-export { getWeek };
+const getWeekFromUrl = () => {
+  const weekParam = new URL(window.location.href).searchParams.get("week");
+  if (!weekParam) return;
+  return Number.parseInt(weekParam);
+};
+
+const updateWeekParam = weekNum => {
+  window.history.replaceState("", "", `/?week=${weekNum}`);
+};
+
+export { getWeek, getWeekFromUrl, updateWeekParam };

@@ -26,6 +26,25 @@ body {
   overflow: scroll;
 }
 
+.byline {
+  opacity: 0.75;
+  align-self: end;
+  justify-self: flex-end;
+  margin-top: auto;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.byline a {
+  color: yellow;
+  text-decoration: none;
+}
+
+.byline a:hover {
+  color: white;
+}
+
 @media (max-width: 768px) {
   body {
     font-size: 14px;

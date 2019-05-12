@@ -18,10 +18,9 @@ const convertSpreadSheetToWeekInfo = spreadSheet => {
   }));
 };
 
-const getInfoForWeek = async weekNum => {
+const getWeekRows = async () => {
   const spreadSheet = await getSpreadSheet();
-  const weeks = convertSpreadSheetToWeekInfo(spreadSheet);
-  return weeks.find(week => week.week === weekNum);
+  return convertSpreadSheetToWeekInfo(spreadSheet);
 };
 
-export { getInfoForWeek };
+export { getWeekRows };

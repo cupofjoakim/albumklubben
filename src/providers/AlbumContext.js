@@ -1,28 +1,42 @@
 import React, { Component } from "react";
 import Preload from "image-preload";
 import { getAlbumByNameAndArtist } from "../services/AlbumService";
-import { getWeek } from "../util";
-import { getInfoForWeek } from "../services/GoogleDriveService";
+import { getWeek, getWeekFromUrl, updateWeekParam } from "../util";
+import { getWeekRows } from "../services/GoogleDriveService";
 
 const AlbumContext = React.createContext();
 
 export class AlbumProvider extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       resourcesToLoad: 3,
       resourcesLoaded: 0,
-      weekNumber: getWeek(),
+      weekNumber: getWeekFromUrl() || getWeek(),
+      weekRows: null,
       albumData: null
     };
   }
 
-  async componentDidMount() {
-    const weekInfo = await getInfoForWeek(this.state.weekNumber);
+  async getWeekInfo() {
+    const weekRows = await getWeekRows();
+    this.setState({
+      weekRows: weekRows
+    });
     this.updateLoadingProgress();
-    console.log(weekInfo);
 
+    let weekInfo = weekRows.find(row => row.week === this.state.weekNumber);
+    // If week isn't available, just show latest week
+    if (!weekInfo) {
+      weekInfo = weekRows[weekRows.length - 1];
+      updateWeekParam(weekInfo.week);
+      this.setState({ weekNumber: weekInfo.week });
+    }
+    return weekInfo;
+  }
+
+  async componentDidMount() {
+    const weekInfo = await this.getWeekInfo();
     const albumData = await getAlbumByNameAndArtist(
       weekInfo.album,
       weekInfo.artist
@@ -52,14 +66,23 @@ export class AlbumProvider extends Component {
 
   render() {
     const { children } = this.props;
+    const {
+      weekNumber,
+      weekRows,
+      albumData,
+      resourcesLoaded,
+      resourcesToLoad
+    } = this.state;
+
+    console.log(weekRows);
 
     return (
       <AlbumContext.Provider
         value={{
-          weekNumber: this.state.weekNumber,
-          albumData: this.state.albumData,
-          loadingProgress:
-            this.state.resourcesLoaded / this.state.resourcesToLoad
+          weekNumber: weekNumber,
+          albumData: albumData,
+          loadingProgress: resourcesLoaded / resourcesToLoad,
+          availableWeeks: weekRows ? weekRows.map(row => row.week) : []
         }}
       >
         {children}

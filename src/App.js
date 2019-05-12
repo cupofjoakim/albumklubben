@@ -15,6 +15,15 @@ function App() {
         <WeekNumber />
         <AlbumInfo />
         <Loader />
+        <div className="byline">
+          A weekend hack by{" "}
+          <a
+            href="https://github.com/cupofjoakim"
+            title="cupofjoakims github profile"
+          >
+            @cupofjoakim 👋
+          </a>
+        </div>
       </div>
     </AlbumProvider>
   );

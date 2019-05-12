@@ -1,0 +1,30 @@
+.week-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.week-number > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.week-number--current {
+  width: 3rem;
+  height: 3rem;
+  background-color: yellow;
+}
+
+.week-number--navigation {
+  background-color: #191414;
+  height: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.week-number--navigation:hover {
+  background-color: white;
+  color: #191414;
+}
