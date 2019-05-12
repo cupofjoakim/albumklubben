@@ -1,0 +1,13 @@
+.backdrop {
+  background-size: 150%;
+  background-position: 50%;
+  /* Add the blur effect */
+  filter: blur(0.75);
+  -webkit-filter: blur(0.75rem);
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  bottom: -2rem;
+  right: -2rem;
+  z-index: -1;
+}
