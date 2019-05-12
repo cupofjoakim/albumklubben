@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "773db5547a26eeaa79e7af1c1ba2a38a",
+    "revision": "b84c0f27b6d51a77f3b3b69c980a8b39",
     "url": "/albumklubben/index.html"
   },
   {
-    "revision": "a42cac043d24911f4290",
+    "revision": "d4a34d2375886272d1be",
     "url": "/albumklubben/static/css/main.487d7ed6.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/albumklubben/static/js/2.dc04e0a4.chunk.js"
   },
   {
-    "revision": "a42cac043d24911f4290",
-    "url": "/albumklubben/static/js/main.c2a05f6a.chunk.js"
+    "revision": "d4a34d2375886272d1be",
+    "url": "/albumklubben/static/js/main.5a078952.chunk.js"
   },
   {
     "revision": "56ad97f766d8acf61be6",
