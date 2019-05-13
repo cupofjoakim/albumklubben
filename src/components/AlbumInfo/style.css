@@ -30,6 +30,17 @@
   margin: 0 0 1rem 0;
 }
 
+.album-info--meta .heading a,
+.album-info--meta .subheading a {
+  text-decoration: none;
+  color: white;
+}
+
+.album-info--meta .heading a:hover,
+.album-info--meta .subheading a:hover {
+  text-decoration: underline;
+}
+
 .album-info--meta .subheading .year {
   font-style: italic;
   opacity: 0.5;

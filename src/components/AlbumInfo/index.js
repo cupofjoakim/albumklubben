@@ -42,41 +42,52 @@ const AlbumArt = ({ imageUrl }) => (
   </div>
 );
 
-const AlbumMeta = ({ albumData: { name, year, artist, urls, tags } }) => (
-  <div key="information" className="album-info--meta">
-    <h1 className="heading">{name}</h1>
-    <p className="subheading">
-      {artist} <span className="year">{year}</span>
-    </p>
-    {tags.length > 0 && (
-      <div className="tags">
-        {tags.map(({ name, url }) => (
-          <Tag key={name + url} name={name} url={url} />
-        ))}
-      </div>
-    )}
-    {urls.map(({ type, url }) => (
-      <ExternalLink key={type} type={type} url={url} />
-    ))}
-  </div>
-);
+const AlbumMeta = ({ albumData: { name, year, artist, urls, tags } }) => {
+  const lastFMUrl = urls.find(url => url.type === "lastfm").url;
+  const artistUrl = lastFMUrl.substr(0, lastFMUrl.lastIndexOf("/"));
 
-const Tag = ({ name, url }) => (
-  <a className="tag" target="_blank" rel="noopener noreferrer" href={url}>
-    #{name}
+  return (
+    <div key="information" className="album-info--meta">
+      <h1 className="heading">
+        <ExternalLink url={lastFMUrl}>{name}</ExternalLink>
+      </h1>
+      <p className="subheading">
+        <ExternalLink url={artistUrl}>{artist}</ExternalLink>{" "}
+        <span className="year">{year}</span>
+      </p>
+      <Tags tags={tags} />
+      {urls.map(({ type, url }) => (
+        <ButtonLink key={type} type={type} url={url} />
+      ))}
+    </div>
+  );
+};
+
+const ExternalLink = ({ url, children, ...props }) => (
+  <a target="_blank" rel="noopener noreferrer" href={url} {...props}>
+    {children}
   </a>
 );
 
-const ExternalLink = ({ type, url }) => (
-  <a
-    className="external-action"
-    target="_blank"
-    rel="noopener noreferrer"
-    href={url}
-  >
+const Tags = ({ tags }) => {
+  if (tags.length === 0) return null;
+
+  return (
+    <div className="tags">
+      {tags.map(({ name, url }) => (
+        <ExternalLink key={name + url} className="tag" url={url}>
+          #{name}
+        </ExternalLink>
+      ))}
+    </div>
+  );
+};
+
+const ButtonLink = ({ type, url }) => (
+  <ExternalLink className="external-action" url={url}>
     <LinkIcon type={type} />
     {getLinkText(type)}
-  </a>
+  </ExternalLink>
 );
 
 const getLinkText = type => {
