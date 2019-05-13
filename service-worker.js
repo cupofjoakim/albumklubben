@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/albumklubben/precache-manifest.edf16fbe3ec6ab33677424acb785e2ee.js"
+  "/albumklubben/precache-manifest.a4778d097f4157670f6cb4a7e7e84061.js"
 );
 
 self.addEventListener('message', (event) => {
