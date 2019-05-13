@@ -22,12 +22,12 @@
 
 .album-info--meta .heading {
   font-size: 3rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 
 .album-info--meta .subheading {
-  font-size: 1.5rem;
-  margin: 1rem 0 2rem 0;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
 }
 
 .album-info--meta .subheading .year {
@@ -48,6 +48,28 @@
 
 .album-info--anim-enter.album-info--anim-enter-active:nth-child(even) {
   transition-delay: 0.15s;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.tag:hover {
+  opacity: 1;
+}
+
+.tag:last-child {
+  margin-right: 0;
+}
+
+.tags {
+  margin-bottom: 2rem;
 }
 
 .external-action {

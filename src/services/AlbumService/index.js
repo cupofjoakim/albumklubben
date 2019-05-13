@@ -17,6 +17,7 @@ const convertToAlbum = ({ name, artist, url, image, tracks, tags }) => ({
   artist,
   urls: [{ type: "lastfm", url }],
   tracks,
+  tags: tags.tag,
   year: findYearInTags(tags.tag),
   image: image.length > 0 ? image[image.length - 1]["#text"] : null
 });

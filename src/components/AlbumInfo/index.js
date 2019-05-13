@@ -10,29 +10,17 @@ const AlbumInfo = () => {
   const [shouldAnimateIn, setShouldAnimateIn] = useState(false);
   if (!albumData) return null;
 
-  // Use local state to stagger animation since css effects are a bit heavy
+  // Use local state to stagger animation.
+  // Without this, the loader cover and the animation would happen at the same
+  // time, resulting in kind of a heavy load.
   if (loadingProgress === 1 && !shouldAnimateIn) {
     setTimeout(() => setShouldAnimateIn(true), 200);
   }
 
   const items = [];
   if (loadingProgress === 1 && shouldAnimateIn) {
-    items.push(
-      <div key="art" className="album-info--cover">
-        <img alt="album cover" src={albumData.image} />
-      </div>
-    );
-    items.push(
-      <div key="information" className="album-info--meta">
-        <h1 className="heading">{albumData.name}</h1>
-        <p className="subheading">
-          {albumData.artist} <span className="year">{albumData.year}</span>
-        </p>
-        {albumData.urls.map(({ type, url }) => (
-          <ExternalLink key={type} type={type} url={url} />
-        ))}
-      </div>
-    );
+    items.push(<AlbumArt key={albumData.image} imageUrl={albumData.image} />);
+    items.push(<AlbumMeta key={albumData} albumData={albumData} />);
   }
 
   return (
@@ -48,8 +36,44 @@ const AlbumInfo = () => {
   );
 };
 
+const AlbumArt = ({ imageUrl }) => (
+  <div key="art" className="album-info--cover">
+    <img alt="album cover" src={imageUrl} />
+  </div>
+);
+
+const AlbumMeta = ({ albumData: { name, year, artist, urls, tags } }) => (
+  <div key="information" className="album-info--meta">
+    <h1 className="heading">{name}</h1>
+    <p className="subheading">
+      {artist} <span className="year">{year}</span>
+    </p>
+    {tags.length > 0 && (
+      <div className="tags">
+        {tags.map(({ name, url }) => (
+          <Tag key={name + url} name={name} url={url} />
+        ))}
+      </div>
+    )}
+    {urls.map(({ type, url }) => (
+      <ExternalLink key={type} type={type} url={url} />
+    ))}
+  </div>
+);
+
+const Tag = ({ name, url }) => (
+  <a className="tag" target="_blank" rel="noopener noreferrer" href={url}>
+    #{name}
+  </a>
+);
+
 const ExternalLink = ({ type, url }) => (
-  <a className="external-action" href={url}>
+  <a
+    className="external-action"
+    target="_blank"
+    rel="noopener noreferrer"
+    href={url}
+  >
     <LinkIcon type={type} />
     {getLinkText(type)}
   </a>
