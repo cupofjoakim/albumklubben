@@ -11,22 +11,26 @@ function App() {
   return (
     <AlbumProvider>
       <Backdrop />
-      <div className="wrapper">
-        <WeekNumber />
-        <AlbumInfo />
-        <div className="byline">
-          A weekend hack by{" "}
-          <a
-            href="https://github.com/cupofjoakim"
-            title="cupofjoakims github profile"
-          >
-            @cupofjoakim <span role="img">👋</span>
-          </a>
-        </div>
-      </div>
+      <PageContent />
       <Loader />
     </AlbumProvider>
   );
 }
+
+const PageContent = () => (
+  <div className="wrapper">
+    <WeekNumber />
+    <AlbumInfo />
+    <div className="byline">
+      A weekend hack by{" "}
+      <a
+        href="https://github.com/cupofjoakim"
+        title="cupofjoakims github profile"
+      >
+        @cupofjoakim <span role="img">👋</span>
+      </a>
+    </div>
+  </div>
+);
 
 export default App;

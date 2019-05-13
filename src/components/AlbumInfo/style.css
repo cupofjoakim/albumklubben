@@ -1,9 +1,13 @@
 .album-info {
   margin: auto auto 0;
+  max-width: 800px;
+}
+
+.album-info,
+.album-info > span {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 800px;
 }
 
 .album-info--cover img {
@@ -29,6 +33,21 @@
 .album-info--meta .subheading .year {
   font-style: italic;
   opacity: 0.5;
+}
+
+.album-info--anim-enter {
+  transform: scale(0.85);
+  opacity: 0.01;
+}
+
+.album-info--anim-enter.album-info--anim-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 400ms ease;
+}
+
+.album-info--anim-enter.album-info--anim-enter-active:nth-child(even) {
+  transition-delay: 0.15s;
 }
 
 .external-action {
