@@ -1,22 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LinkIcon = ({ type }) => {
-  switch (type) {
-    case 'spotify':
-      return <SpotifyIcon />;
-    case 'lastfm':
-      return <LastFMIcon />;
-    default:
-      return null;
-  }
-};
-
-LinkIcon.propTypes = {
-  type: PropTypes.oneOf(['spotify', 'lastfm']).isRequired,
-};
-
-export const SpotifyIcon = () => (
+const SpotifyIcon = () => (
   <svg
     width="24"
     height="24"
@@ -32,7 +17,7 @@ export const SpotifyIcon = () => (
   </svg>
 );
 
-export const LastFMIcon = () => (
+const LastFMIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -46,5 +31,20 @@ export const LastFMIcon = () => (
     />
   </svg>
 );
+
+const LinkIcon = ({ type }) => {
+  switch (type) {
+    case 'spotify':
+      return <SpotifyIcon />;
+    case 'lastfm':
+      return <LastFMIcon />;
+    default:
+      return null;
+  }
+};
+
+LinkIcon.propTypes = {
+  type: PropTypes.oneOf(['spotify', 'lastfm']).isRequired,
+};
 
 export default LinkIcon;
