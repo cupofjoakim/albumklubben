@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/albumklubben/static/css/main.ba522ff0.chunk.css",
-    "main.js": "/albumklubben/static/js/main.2ce58fbd.chunk.js",
-    "main.js.map": "/albumklubben/static/js/main.2ce58fbd.chunk.js.map",
+    "main.css": "/albumklubben/static/css/main.a922f408.chunk.css",
+    "main.js": "/albumklubben/static/js/main.7c131068.chunk.js",
+    "main.js.map": "/albumklubben/static/js/main.7c131068.chunk.js.map",
     "runtime~main.js": "/albumklubben/static/js/runtime~main.282a29af.js",
     "runtime~main.js.map": "/albumklubben/static/js/runtime~main.282a29af.js.map",
-    "static/js/2.1fe0327c.chunk.js": "/albumklubben/static/js/2.1fe0327c.chunk.js",
-    "static/js/2.1fe0327c.chunk.js.map": "/albumklubben/static/js/2.1fe0327c.chunk.js.map",
+    "static/js/2.63e1f100.chunk.js": "/albumklubben/static/js/2.63e1f100.chunk.js",
+    "static/js/2.63e1f100.chunk.js.map": "/albumklubben/static/js/2.63e1f100.chunk.js.map",
     "index.html": "/albumklubben/index.html",
-    "precache-manifest.c2ccafd987687a2a55d8c7bfccb60555.js": "/albumklubben/precache-manifest.c2ccafd987687a2a55d8c7bfccb60555.js",
+    "precache-manifest.c30dc35a5f074cfe8dcbe45fb165b923.js": "/albumklubben/precache-manifest.c30dc35a5f074cfe8dcbe45fb165b923.js",
     "service-worker.js": "/albumklubben/service-worker.js",
-    "static/css/main.ba522ff0.chunk.css.map": "/albumklubben/static/css/main.ba522ff0.chunk.css.map"
+    "static/css/main.a922f408.chunk.css.map": "/albumklubben/static/css/main.a922f408.chunk.css.map"
   }
 }
