@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
-import { CSSTransitionGroup } from "react-transition-group";
-import AlbumContext from "../../providers/AlbumContext";
-import "./style.css";
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { CSSTransitionGroup } from 'react-transition-group';
+import AlbumContext from '../../providers/AlbumContext';
+import './style.css';
 
 const Loader = () => {
   const { loadingProgress } = useContext(AlbumContext);
@@ -12,7 +13,7 @@ const Loader = () => {
       <div key="loadingcover" className="loading-cover">
         <Progress percent={loadingProgress * 100} />
         <div className="loading-message">Loading album data...</div>
-      </div>
+      </div>,
     );
   }
 
@@ -32,5 +33,9 @@ const Progress = ({ percent }) => (
     <div className="progress--bar" style={{ width: `${percent}%` }} />
   </div>
 );
+
+Progress.propTypes = {
+  percent: PropTypes.number.isRequired,
+};
 
 export default Loader;

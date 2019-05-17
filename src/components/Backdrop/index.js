@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import AlbumContext from "../../providers/AlbumContext";
-import "./style.css";
+import React, { useContext } from 'react';
+import AlbumContext from '../../providers/AlbumContext';
+import './style.css';
 
 const Backdrop = () => {
   const { albumData } = useContext(AlbumContext);
@@ -10,7 +10,7 @@ const Backdrop = () => {
     <div
       className="backdrop"
       style={{
-        backgroundImage: `url("${albumData.image}")`
+        backgroundImage: `url("${albumData.image}")`,
       }}
     />
   );

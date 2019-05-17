@@ -1,6 +1,7 @@
-import React, { useContext, Fragment } from "react";
-import AlbumContext from "../../providers/AlbumContext";
-import "./style.css";
+import React, { useContext, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import AlbumContext from '../../providers/AlbumContext';
+import './style.css';
 
 const WeekNumber = () => {
   const { weekNumber, availableWeeks } = useContext(AlbumContext);
@@ -47,6 +48,11 @@ const WeekNavigation = ({ currentWeek, weeks }) => {
       )}
     </Fragment>
   );
+};
+
+WeekNavigation.propTypes = {
+  currentWeek: PropTypes.number.isRequired,
+  weeks: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default WeekNumber;

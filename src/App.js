@@ -1,11 +1,11 @@
-import React from "react";
-import { AlbumProvider } from "./providers/AlbumContext";
-import WeekNumber from "./components/WeekNumber";
-import Backdrop from "./components/Backdrop";
-import AlbumInfo from "./components/AlbumInfo";
-import Loader from "./components/Loader";
+import React from 'react';
+import { AlbumProvider } from './providers/AlbumContext';
+import WeekNumber from './components/WeekNumber';
+import Backdrop from './components/Backdrop';
+import AlbumInfo from './components/AlbumInfo';
+import Loader from './components/Loader';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   return (
@@ -22,12 +22,15 @@ const PageContent = () => (
     <WeekNumber />
     <AlbumInfo />
     <div className="byline">
-      A weekend hack by{" "}
+      A weekend hack by{' '}
       <a
         href="https://github.com/cupofjoakim"
         title="cupofjoakims github profile"
       >
-        @cupofjoakim <span role="img">👋</span>
+        @cupofjoakim{' '}
+        <span role="img" aria-label="A waving hand">
+          👋
+        </span>
       </a>
     </div>
   </div>

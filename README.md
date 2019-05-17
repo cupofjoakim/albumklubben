@@ -9,8 +9,6 @@ This was also a good opportunity for me to try out the context api and `useConte
 To be able to do this quickly I've made som sacrifices to make sure I didn't muck around with build settings or other stuff:
 
 - No tests
-- No eslint config
-- No prettier config
 - Plain css
 - No usage of react-router, I manually read from the `week` param in `./src/util/index.js`
 - The AlbumContext provider is real messy and needs some love
