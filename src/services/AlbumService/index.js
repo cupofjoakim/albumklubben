@@ -28,16 +28,32 @@ const convertToAlbum = ({ name, artist, url, image, tracks, tags }) => ({
   image: image.length > 0 ? image[image.length - 1]['#text'] : null,
 });
 
+const getStorageKey = (album, artist) => encodeURI(`${album}-${artist}`);
+
+const cacheAlbum = (data, album, artist) => {
+  sessionStorage.setItem(getStorageKey(album, artist), JSON.stringify(data));
+};
+
+const getCachedAlbum = (album, artist) => {
+  const albumData = sessionStorage.getItem(getStorageKey(album, artist));
+  if (albumData) return JSON.parse(albumData);
+};
+
 class AlbumService {
   static async getAlbumByNameAndArtist(album, artist) {
     if (!album || !artist)
       throw new Error('Both album and artist needs to be passed');
 
+    const cachedAlbumData = getCachedAlbum(album, artist);
+    if (cachedAlbumData) return cachedAlbumData;
+
     const body = buildParams('album.getInfo', album, artist);
     return fetch(BASE_URL + body).then(async res => {
       if (!res.ok) throw new Error('Unable to get album data!');
       const response = await res.json();
-      return convertToAlbum(response.album);
+      const convertedAlbum = convertToAlbum(response.album);
+      cacheAlbum(convertedAlbum, album, artist);
+      return convertedAlbum;
     });
   }
 }
