@@ -36,7 +36,7 @@ const cacheAlbum = (data, album, artist) => {
 
 const getCachedAlbum = (album, artist) => {
   const albumData = sessionStorage.getItem(getStorageKey(album, artist));
-  if (albumData) return JSON.parse(albumData);
+  return albumData ? JSON.parse(albumData) : null;
 };
 
 class AlbumService {
