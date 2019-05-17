@@ -3,13 +3,6 @@
   max-width: 800px;
 }
 
-.album-info,
-.album-info > span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .album-info--cover img {
   max-width: 19rem;
   width: 100%;
@@ -104,6 +97,15 @@
   margin-right: 1rem;
   display: inline-block;
   vertical-align: middle;
+}
+
+@media (min-width: 769px) {
+  .album-info,
+  .album-info > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 768px) {
