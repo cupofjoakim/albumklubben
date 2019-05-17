@@ -4,28 +4,125 @@
   left: 0;
 }
 
-.week-number > * {
+.week-number--current {
+  width: 3rem;
+  height: 3rem;
+  background-color: #ff0;
+}
+
+.week-number--nav--year {
+  padding: 0 1rem;
+  line-height: 1.5rem;
+  background: #191414;
+}
+
+.week-number--nav-container {
+  display: none;
+  color: #fff;
+  position: absolute;
+  width: 400px;
+  top: 0;
+  left: 3rem;
+  background: #191414;
+}
+
+@media (max-width: 768px) {
+  .week-number--nav-container {
+    width: calc(100vw - 3rem);
+  }
+}
+
+.week-number--current:hover + .week-number--nav-container,
+.week-number--nav-container:hover {
+  display: block;
+}
+
+.week-number--list {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.week-number--current:hover + .week-number--nav-container .week-number--list,
+.week-number--nav-container:hover .week-number--list {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.week-number--list-item {
+  display: block;
+  line-height: 1.5rem;
+  background: #fff;
+  color: #191414;
+  transition: all 0.1s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.week-number--list-item:hover {
+  background: #191414;
+  color: #fff;
+}
+
+.week-number--list-item .week-number--list-item--week {
+  display: inline-block;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  background: #ff0;
+  color: #191414;
+  transition: all 0.1s ease;
+}
+
+.week-number--list-item:hover .week-number--list-item--week {
+  background: #191414;
+  color: #ff0;
+}
+
+.week-number--list-item .week-number--list-item--week > span {
+  display: block;
+  transition: transform 0.1s ease;
+}
+
+.week-number--list-item:hover .week-number--list-item--week > span {
+  transform: scale(1.5);
+}
+
+.week-number .week-number--navigation,
+.week-number .week-number--current {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
 
-.week-number--current {
-  width: 3rem;
-  height: 3rem;
-  background-color: yellow;
-}
-
 .week-number--navigation {
   background-color: #191414;
   height: 1.5rem;
-  color: white;
+  color: #fff;
   text-decoration: none;
   transition: all 0.1s ease;
 }
 
 .week-number--navigation:hover {
-  background-color: white;
+  background-color: #fff;
   color: #191414;
+}
+
+.filter-input {
+  display: block;
+  margin: 0;
+  width: 100%;
+  border: none;
+  line-height: 3rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  background: #000;
+  color: #fff;
+}
+
+.secondary-label {
+  font-style: italic;
+  margin-left: 0.5rem;
+  opacity: 0.7;
 }

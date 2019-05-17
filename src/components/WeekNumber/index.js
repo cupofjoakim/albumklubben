@@ -4,7 +4,7 @@ import WeekNavigation from './WeekNavigation';
 import './style.css';
 
 const WeekNumber = () => {
-  const { weekNumber, availableWeeks } = useContext(AlbumContext);
+  const { weekNumber } = useContext(AlbumContext);
 
   return (
     <div className="week-number">
@@ -14,7 +14,7 @@ const WeekNumber = () => {
       >
         {weekNumber}
       </div>
-      <WeekNavigation weeks={availableWeeks} currentWeek={weekNumber} />
+      <WeekNavigation />
     </div>
   );
 };

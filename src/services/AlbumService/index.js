@@ -28,7 +28,8 @@ const convertToAlbum = ({ name, artist, url, image, tracks, tags }) => ({
   image: image.length > 0 ? image[image.length - 1]['#text'] : null,
 });
 
-const getStorageKey = (album, artist) => encodeURI(`${album}-${artist}`);
+const getStorageKey = (album = '', artist = '') =>
+  encodeURI(`${album.toLowerCase()}-${artist.toLowerCase()}`);
 
 const cacheAlbum = (data, album, artist) => {
   sessionStorage.setItem(getStorageKey(album, artist), JSON.stringify(data));

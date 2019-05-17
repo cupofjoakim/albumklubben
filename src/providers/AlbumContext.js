@@ -82,7 +82,7 @@ export class AlbumProvider extends Component {
           weekNumber,
           albumData,
           loadingProgress: resourcesLoaded / resourcesToLoad,
-          availableWeeks: weekRows ? weekRows.map(row => row.week) : [],
+          availableWeeks: weekRows,
         }}
       >
         {children}

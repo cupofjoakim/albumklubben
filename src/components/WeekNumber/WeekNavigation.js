@@ -1,40 +1,57 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useContext, Fragment } from 'react';
+import PrevNextWeek from './PrevNextWeek';
+import { getWeekLink, getWeek } from '../../util';
+import AlbumContext from '../../providers/AlbumContext';
 
-const WeekNavigation = ({ currentWeek, weeks }) => {
-  if (!weeks) return null;
-  const weekIndex = weeks.indexOf(currentWeek);
-  const isLastWeek = weeks[weeks.length - 1] === currentWeek;
-  const hasPreviousWeeks = weekIndex > 0;
-  const pathName = window.location.pathname;
+const WeekNavigation = () => {
+  const { weekNumber, availableWeeks } = useContext(AlbumContext);
+  const [filter, setFilter] = useState('');
+  if (!availableWeeks) return null;
+
+  const weeksToShow = availableWeeks.filter(({ week, artist, album }) => {
+    if (!filter) return true;
+    const baseFilter = filter.toLowerCase();
+    const searchables = [week.toString(), album, artist];
+    return searchables.some(searchable =>
+      searchable.toLowerCase().includes(baseFilter),
+    );
+  });
+  const currentWeek = getWeek();
 
   return (
     <Fragment>
-      {hasPreviousWeeks && (
-        <a
-          className="week-number--navigation"
-          href={`${pathName}?week=${weeks[weekIndex - 1]}`}
-          title="Previous week"
-        >
-          ←
-        </a>
-      )}
-      {!isLastWeek && (
-        <a
-          className="week-number--navigation"
-          href={`${pathName}?week=${weeks[weekIndex + 1]}`}
-          title="Next week"
-        >
-          →
-        </a>
-      )}
+      <div className="week-number--nav-container">
+        <div className="week-number--list-header">
+          <input
+            className="filter-input"
+            onChange={({ target: { value } }) => setFilter(value)}
+            placeholder="Filter albums"
+          />
+        </div>
+        <div className="week-number--list">
+          {weeksToShow.map(({ week, album, artist }) => (
+            <a
+              key={`listnav-${week}`}
+              className="week-number--list-item"
+              href={getWeekLink(week)}
+            >
+              <div className="week-number--list-item--week">
+                <span>{week}</span>
+              </div>
+              {album} - {artist}
+              {week === currentWeek && (
+                <span className="secondary-label">(Current week)</span>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+      <PrevNextWeek
+        displayedWeek={weekNumber}
+        weeks={availableWeeks.map(({ week }) => week)}
+      />
     </Fragment>
   );
-};
-
-WeekNavigation.propTypes = {
-  currentWeek: PropTypes.number.isRequired,
-  weeks: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default WeekNavigation;

@@ -23,6 +23,8 @@ const getWeekFromUrl = () => {
   return +weekParam;
 };
 
+const getWeekLink = week => `${window.location.pathname}?week=${week}`;
+
 const updateWeekParam = weekNum => {
   window.history.replaceState(
     '',
@@ -31,4 +33,4 @@ const updateWeekParam = weekNum => {
   );
 };
 
-export { getWeek, getWeekFromUrl, updateWeekParam };
+export { getWeek, getWeekFromUrl, getWeekLink, updateWeekParam };
