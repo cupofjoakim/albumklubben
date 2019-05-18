@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import AlbumContext from '../../providers/AlbumContext';
+import AlbumContext from '../../contexts/AlbumContext';
 import WeekNavigation from './WeekNavigation';
 import './style.css';
 

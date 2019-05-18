@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 
-import AlbumContext from '../../providers/AlbumContext';
+import AlbumContext from '../../contexts/AlbumContext';
 import AlbumArt from './AlbumArt';
 import AlbumMeta from './AlbumMeta';
 import './style.css';

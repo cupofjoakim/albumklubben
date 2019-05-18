@@ -11,7 +11,6 @@ To be able to do this quickly I've made som sacrifices to make sure I didn't muc
 - No tests
 - Plain css
 - No usage of react-router, I manually read from the `week` param in `./src/util/index.js`
-- The AlbumContext provider is real messy and needs some love
 - Sub-par structure and unclear naming conventions on both folders and files
 
 I might update this if it actually turns out to be something I like doing, but for now it's just laying here.

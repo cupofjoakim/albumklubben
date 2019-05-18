@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlbumProvider } from './providers/AlbumContext';
+import { AlbumProvider } from './contexts/AlbumContext';
 import WeekNumber from './components/WeekNumber';
 import Backdrop from './components/Backdrop';
 import AlbumInfo from './components/AlbumInfo';

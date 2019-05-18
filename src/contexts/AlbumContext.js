@@ -44,9 +44,7 @@ export class AlbumProvider extends Component {
 
   async getWeekInfo() {
     const weekRows = await GoogleDriveService.getWeekRows();
-    this.setState({
-      weekRows,
-    });
+    this.setState({ weekRows });
     this.updateLoadingProgress();
 
     const { weekNumber } = this.state;

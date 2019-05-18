@@ -1,7 +1,7 @@
 import React, { useState, useContext, Fragment } from 'react';
 import PrevNextWeek from './PrevNextWeek';
 import { getWeekLink, getWeek } from '../../util';
-import AlbumContext from '../../providers/AlbumContext';
+import AlbumContext from '../../contexts/AlbumContext';
 
 const WeekNavigation = () => {
   const { weekNumber, availableWeeks } = useContext(AlbumContext);

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
-import AlbumContext from '../../providers/AlbumContext';
+import AlbumContext from '../../contexts/AlbumContext';
 import ProgressBar from './ProgressBar';
 import './style.css';
 
