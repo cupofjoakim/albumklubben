@@ -58,11 +58,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  outline: 0;
 }
 
 .week-number--list-item:hover {
   background: #191414;
   color: #fff;
+}
+
+.week-number--list-item:active:hover {
+  transform: scale(0.95);
 }
 
 .week-number--list-item .week-number--list-item--week {
@@ -107,6 +112,18 @@
 .week-number--navigation:hover {
   background-color: #fff;
   color: #191414;
+}
+
+.week-number--navigation > span {
+  transition: transform 0.1s ease;
+}
+
+.week-number--navigation.left:active > span {
+  transform: translateX(0.5rem);
+}
+
+.week-number--navigation.right:active > span {
+  transform: translateX(-0.5rem);
 }
 
 .filter-input {

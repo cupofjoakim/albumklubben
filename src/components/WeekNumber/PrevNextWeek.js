@@ -11,20 +11,20 @@ const PrevNextWeek = ({ displayedWeek, weeks }) => {
     <Fragment>
       {hasPreviousWeeks && (
         <a
-          className="week-number--navigation"
+          className="week-number--navigation right"
           href={getWeekLink(weeks[weekIndex - 1])}
           title="Previous week"
         >
-          ←
+          <span>←</span>
         </a>
       )}
       {!isLastWeek && (
         <a
-          className="week-number--navigation"
+          className="week-number--navigation left"
           href={getWeekLink(weeks[weekIndex + 1])}
           title="Next week"
         >
-          →
+          <span>→</span>
         </a>
       )}
     </Fragment>

@@ -93,6 +93,10 @@
   background: white;
 }
 
+.external-action:active {
+  transform: scale(0.95);
+}
+
 .external-action svg {
   margin-right: 1rem;
   display: inline-block;
