@@ -15,6 +15,7 @@ const findYearInTags = tags => {
   const matchingTags = tags.filter(
     tag => /^\d+$/.test(tag.name) && tag.name.length === 4,
   );
+  if (matchingTags.length === 0) return null;
   return matchingTags[0].name;
 };
 
