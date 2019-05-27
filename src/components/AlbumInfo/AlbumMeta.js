@@ -28,7 +28,7 @@ const AlbumMeta = ({ albumData: { name, year, artist, urls, tags } }) => {
 AlbumMeta.propTypes = {
   albumData: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
+    year: PropTypes.string,
     artist: PropTypes.string.isRequired,
     urls: PropTypes.array.isRequired,
     tags: PropTypes.array.isRequired,

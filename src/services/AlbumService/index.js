@@ -5,8 +5,8 @@ const BASE_URL = 'https://ws.audioscrobbler.com/2.0/';
 const buildParams = (method, album, artist, autoCorrect = 1) => {
   let str = '';
   if (method) str = `${str}?method=${method}`;
-  if (album) str = `${str}&album=${album}`;
-  if (artist) str = `${str}&artist=${artist}`;
+  if (album) str = `${str}&album=${encodeURIComponent(album)}`;
+  if (artist) str = `${str}&artist=${encodeURIComponent(artist)}`;
   if (autoCorrect) str = `${str}&autocorrect=${autoCorrect}`;
   return `${str}&api_key=${PUBLIC_KEY}&format=json`;
 };
