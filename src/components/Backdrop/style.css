@@ -11,3 +11,12 @@
   right: -2rem;
   z-index: -1;
 }
+
+.opacity-anim-enter {
+  opacity: 0.01;
+}
+
+.opacity-anim-enter.opacity-anim-enter-active {
+  opacity: 1;
+  transition: all 500ms ease;
+}

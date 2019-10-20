@@ -53,6 +53,11 @@ class AlbumService {
     return fetch(BASE_URL + body).then(async res => {
       if (!res.ok) throw new Error('Unable to get album data!');
       const response = await res.json();
+      if (response.error) {
+        throw new Error(
+          'Unable to get album data, if the drive documented correct?',
+        );
+      }
       const convertedAlbum = convertToAlbum(response.album);
       cacheAlbum(convertedAlbum, album, artist);
       return convertedAlbum;

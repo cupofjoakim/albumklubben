@@ -1,39 +1,42 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+
 import { AlbumProvider } from './contexts/AlbumContext';
 import WeekNumber from './components/WeekNumber';
 import Backdrop from './components/Backdrop';
-import AlbumInfo from './components/AlbumInfo';
-import Loader from './components/Loader';
+import AlbumView from './components/AlbumView';
+import ListView from './components/ListView';
+import Footer from './components/Footer';
 
 import './App.css';
+import { getWeek } from './util';
+import { WeekProvider } from './contexts/WeekContext';
 
 function App() {
   return (
-    <AlbumProvider>
-      <Backdrop />
-      <PageContent />
-      <Loader />
-    </AlbumProvider>
+    <WeekProvider>
+      <AlbumProvider>
+        <Backdrop />
+        <div className="wrapper">
+          <BrowserRouter>
+            <Switch>
+              <Route path="/week/:id">
+                <WeekNumber />
+                <AlbumView />
+              </Route>
+              {/* <Route path="/week">
+                <ListView />
+              </Route> */}
+              <Route path="/">
+                <Redirect to={`/week/${getWeek()}`} />
+              </Route>
+            </Switch>
+          </BrowserRouter>
+          <Footer />
+        </div>
+      </AlbumProvider>
+    </WeekProvider>
   );
 }
-
-const PageContent = () => (
-  <div className="wrapper">
-    <WeekNumber />
-    <AlbumInfo />
-    <div className="byline">
-      A weekend hack by{' '}
-      <a
-        href="https://github.com/cupofjoakim"
-        title="cupofjoakims github profile"
-      >
-        @cupofjoakim{' '}
-        <span role="img" aria-label="A waving hand">
-          👋
-        </span>
-      </a>
-    </div>
-  </div>
-);
 
 export default App;

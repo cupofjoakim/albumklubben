@@ -1,14 +1,15 @@
-import React, { useState, useContext, Fragment } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import PrevNextWeek from './PrevNextWeek';
-import { getWeekLink, getWeek } from '../../util';
-import AlbumContext from '../../contexts/AlbumContext';
+import WeekContext from '../../contexts/WeekContext';
 
 const WeekNavigation = () => {
-  const { weekNumber, availableWeeks } = useContext(AlbumContext);
+  const { weekRows } = useContext(WeekContext);
+  const { id } = useParams();
   const [filter, setFilter] = useState('');
-  if (!availableWeeks) return null;
+  if (!weekRows) return null;
 
-  const weeksToShow = availableWeeks.filter(({ week, artist, album }) => {
+  const weeksToShow = weekRows.filter(({ week, artist, album }) => {
     if (!filter) return true;
     const baseFilter = filter.toLowerCase();
     const searchables = [week.toString(), album, artist];
@@ -16,10 +17,10 @@ const WeekNavigation = () => {
       searchable.toLowerCase().includes(baseFilter),
     );
   });
-  const currentWeek = getWeek();
+  const currentWeek = parseInt(id, 10);
 
   return (
-    <Fragment>
+    <>
       <div className="week-number--nav-container">
         <div className="week-number--list-header">
           <input
@@ -30,10 +31,10 @@ const WeekNavigation = () => {
         </div>
         <div className="week-number--list">
           {weeksToShow.map(({ week, album, artist }) => (
-            <a
+            <Link
               key={`listnav-${week}`}
               className="week-number--list-item"
-              href={getWeekLink(week)}
+              to={`/week/${week}`}
             >
               <div className="week-number--list-item--week">
                 <span>{week}</span>
@@ -42,15 +43,15 @@ const WeekNavigation = () => {
               {week === currentWeek && (
                 <span className="secondary-label">(Current week)</span>
               )}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
       <PrevNextWeek
-        displayedWeek={weekNumber}
-        weeks={availableWeeks.map(({ week }) => week)}
+        displayedWeek={currentWeek}
+        weeks={weekRows.map(({ week }) => week)}
       />
-    </Fragment>
+    </>
   );
 };
 

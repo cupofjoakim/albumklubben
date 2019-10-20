@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { getWeekLink } from '../../util';
+import { Link } from 'react-router-dom';
 
 const PrevNextWeek = ({ displayedWeek, weeks }) => {
   const weekIndex = weeks.indexOf(displayedWeek);
@@ -8,26 +8,26 @@ const PrevNextWeek = ({ displayedWeek, weeks }) => {
   const hasPreviousWeeks = weekIndex > 0;
 
   return (
-    <Fragment>
+    <>
       {hasPreviousWeeks && (
-        <a
+        <Link
           className="week-number--navigation right"
-          href={getWeekLink(weeks[weekIndex - 1])}
+          to={`/week/${weeks[weekIndex - 1]}`}
           title="Previous week"
         >
           <span>←</span>
-        </a>
+        </Link>
       )}
       {!isLastWeek && (
-        <a
+        <Link
           className="week-number--navigation left"
-          href={getWeekLink(weeks[weekIndex + 1])}
+          to={`/week/${weeks[weekIndex + 1]}`}
           title="Next week"
         >
           <span>→</span>
-        </a>
+        </Link>
       )}
-    </Fragment>
+    </>
   );
 };
 

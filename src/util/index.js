@@ -17,20 +17,4 @@ const getWeek = (date = new Date()) => {
   );
 };
 
-const getWeekFromUrl = () => {
-  const weekParam = new URL(window.location.href).searchParams.get('week');
-  if (!weekParam) return null;
-  return +weekParam;
-};
-
-const getWeekLink = week => `${window.location.pathname}?week=${week}`;
-
-const updateWeekParam = weekNum => {
-  window.history.replaceState(
-    '',
-    '',
-    `${window.location.pathname}?week=${weekNum}`,
-  );
-};
-
-export { getWeek, getWeekFromUrl, getWeekLink, updateWeekParam };
+export { getWeek };
