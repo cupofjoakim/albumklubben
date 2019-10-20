@@ -3,15 +3,6 @@
   "homepage": "https://cupofjoakim.github.io/albumklubben",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "gh-pages": "^2.0.1",
-    "image-preload": "^1.0.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "react-transition-group": "1.x"
-  },
   "scripts": {
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
@@ -36,15 +27,25 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "image-preload": "^1.0.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0",
+    "react-transition-group": "1.x"
+  },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-import": "^2.17.2",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.5.1",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.13.0",
-    "prettier": "^1.17.1"
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "prettier": "^1.18.2"
   }
 }
