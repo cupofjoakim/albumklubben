@@ -1,30 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import AlbumContext from '../../contexts/AlbumContext';
 import './style.css';
 
 const Backdrop = () => {
-  const { loaded, albumData } = useContext(AlbumContext);
+  const { albumData } = useContext(AlbumContext);
+  const [items, setItems] = useState([]);
 
-  const items = [];
-  if (loaded && albumData.image) {
-    items.push(
-      <div
-        className="backdrop"
-        style={{
-          backgroundImage: `url("${albumData.image}")`,
-        }}
-      />,
-    );
+  if (albumData && albumData.image && !items.includes(albumData.image)) {
+    setItems([albumData.image]);
   }
 
   return (
     <CSSTransitionGroup
       transitionName="opacity-anim"
       transitionEnterTimeout={100}
-      transitionLeaveTimeout={300}
+      transitionLeaveTimeout={100}
     >
-      {items}
+      {items.map(imageUrl => (
+        <div
+          className="backdrop"
+          key={imageUrl}
+          style={{
+            backgroundImage: `url("${imageUrl}")`,
+          }}
+        />
+      ))}
     </CSSTransitionGroup>
   );
 };

@@ -1,5 +1,5 @@
 .backdrop {
-  background-size: 150%;
+  background-size: cover;
   background-position: 50%;
   /* Add the blur effect */
   filter: blur(0.75);
@@ -18,5 +18,14 @@
 
 .opacity-anim-enter.opacity-anim-enter-active {
   opacity: 1;
-  transition: all 500ms ease;
+  transition: all 100ms ease;
+}
+
+.opacity-anim-leave {
+  opacity: 1;
+}
+
+.opacity-anim-leave.opacity-anim-leave-active {
+  opacity: 0.01;
+  transition: all 100ms ease;
 }

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import { CSSTransitionGroup } from 'react-transition-group';
 import { useParams } from 'react-router-dom';
 
@@ -10,10 +11,10 @@ import './style.css';
 
 const AlbumView = () => {
   const { weekRows } = useContext(WeekContext);
-  const { albumData, loaded, loadAlbumData } = useContext(AlbumContext);
-
-  const [shouldAnimateIn, setShouldAnimateIn] = useState(false);
+  const { albumData, loadAlbumData } = useContext(AlbumContext);
+  const [shownItems, setShownItems] = useState([]);
   const { id } = useParams();
+
   if (!weekRows) return null;
 
   const weekInfo = weekRows.filter(row => row.week === parseInt(id, 10)).pop();
@@ -23,30 +24,36 @@ const AlbumView = () => {
     return null;
   }
 
-  // Use local state to stagger animation.
-  // Without this, the loader cover and the animation would happen at the same
-  // time, resulting in kind of a heavy load.
-  if (loaded && !shouldAnimateIn) {
-    setTimeout(() => setShouldAnimateIn(true), 200);
-  }
-
-  const items = [];
-  if (loaded && shouldAnimateIn) {
-    items.push(<AlbumArt key={albumData.image} imageUrl={albumData.image} />);
-    items.push(<AlbumMeta key={albumData} albumData={albumData} />);
+  if (!shownItems.map(i => i.forWeek).includes(albumData.forWeek)) {
+    setShownItems([albumData]);
   }
 
   return (
     <main className="album-info">
       <CSSTransitionGroup
         transitionName="album-info--anim"
-        transitionEnterTimeout={items.length * 200 + 300}
+        transitionEnterTimeout={shownItems.length * 200 + 300}
         transitionLeaveTimeout={300}
       >
-        {items}
+        {shownItems.map(data => (
+          <AlbumInfo albumData={data} key={JSON.stringify(data)} />
+        ))}
       </CSSTransitionGroup>
     </main>
   );
+};
+
+const AlbumInfo = ({ albumData }) => (
+  <>
+    <AlbumArt imageUrl={albumData.image} />
+    <AlbumMeta albumData={albumData} />
+  </>
+);
+
+AlbumInfo.propTypes = {
+  albumData: PropTypes.shape({
+    image: PropTypes.string,
+  }).isRequired,
 };
 
 export default AlbumView;

@@ -54,6 +54,21 @@
   transition-delay: 0.15s;
 }
 
+.album-info--anim-leave {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.album-info--anim-leave.album-info--anim-leave-active {
+  transform: scale(0.85);
+  opacity: 0.01;
+  transition: all 400ms ease;
+}
+
+.album-info--anim-leave.album-info--anim-leave-active:nth-child(odd) {
+  transition-delay: 0.15s;
+}
+
 .tag {
   display: inline-block;
   margin-right: 0.5rem;
